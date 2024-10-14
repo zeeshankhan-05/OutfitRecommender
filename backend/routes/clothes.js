@@ -9,3 +9,8 @@ router.post('/clothes', clothesController.addClothingItem);
 router.get('/clothes', clothesController.getClothingItems);
 
 module.exports = router;
+
+const authenticate = require('backend/middleware/authMiddleware');
+
+router.post('/clothes', authenticate, clothingController.addClothingItem);
+router.get('/clothes', authenticate, clothingController.getClothingItems);
